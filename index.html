@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Crystal Collector</title>
+	
+<!-- Link to Reset CSS -->
+	<link rel="stylesheet" type="text/css" href="./assets/css/reset.css"></link>
+<!-- Link to Boostrap CDN -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Link to Style CSS -->
+	<link rel="stylesheet" type="text/css" href="./assets/css/style.css"></link>
+<!-- Google Font for Title -->
+	<link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet"></link>
+<!-- Link to jQuery -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  	integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  	crossorigin="anonymous"></script>
+<!-- Link to JavaScript -->
+	<script type="text/javascript" src="./assets/javascript/game.js"></script>
+
+</head>
+<body>
+	<div class="container">
+		<h1 class="text-center"><strong>Crystal Collector: The Game</strong></h1>
+
+		<hr></hr>
+<!-- Game instructions -->
+		<div class="col-md-6" class="instructions">
+			<p>You will be given a random number at the start of the game.</p> 
+
+			<p>There are 4 crystals below. Click on a crystal to add a specific amount of points to your total score.</p> 
+
+			<p>Win by matching your total score to the random number. If your total score goes above the random number you lose.</p> 
+			<p>The value of each crystal is hidden from you until you click on it.</p> 
+
+			<p>Each time the game starts, the random number and crystal values will change as well. Good luck!</p>
+		</div>
+<!-- Counters for game stats -->
+		<div class="col-md-6" class="game">
+			<div class="col-xs-6">
+				<p id="randomNumber">Goal: <span id="randomNumber"></span></p>
+				<p id="totalScore">Total score: <span id="totalScore"></span></p>
+			</div>
+			<div class="col-xs-6">
+				<p id="wins">Wins: <span id="wins"></span></p>
+  				<p id="losses">Losses: <span id="losses"></span></p>
+	  		</div>
+		</div>
+<!-- Buttons for crystals -->
+		<div class="col-md-9" class="text-center">
+			<button class="btn-default" class="button" id="crystal1"><img src="./assets/images/amber.png" width="100" height="100"></button>
+			<button class="btn-default" class="button" id="crystal2"><img src="./assets/images/gem.png" width="100" height="100"></button>
+			<button class="btn-default" class="button" id="crystal3"><img src="./assets/images/amethyst.png" width="100" height="100"></button>
+			<button class="btn-default" class="button" id="crystal4"><img src="./assets/images/gemstone.png" width="100" height="100"></button>
+		</div>
+	</div>
+</body>
+</html>

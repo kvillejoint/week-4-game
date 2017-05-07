@@ -1,0 +1,12 @@
+body {
+	background-image: url(../images/greybackground.jpg);
+    background-repeat: no-repeat;  
+    background-size: cover;
+    color: white;
+}
+
+h1 {
+	font-family: 'Fredericka the Great', cursive;
+}
+
+
