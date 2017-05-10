@@ -20,10 +20,10 @@ $(document).ready(function() {
 // variable for crystal array
 	var crystal = [];
 // boolean variable for initial crystal value of null
-	var crystal1 = 0;
-	var crystal2 = 0;
-	var crystal3 = 0;
-	var crystal4 = 0;
+	var crystal1 = [];
+	var crystal2 = [];
+	var crystal3 = [];
+	var crystal4 = [];
 
 //Variables and function for generating values for gem buttonsActions for buttons - random value between 1-12 for each button
 	var crystalMinNumber = 1;
@@ -37,28 +37,8 @@ $(document).ready(function() {
 }
 	var buttonArray = ["button"]
 	*/
-
-//Start game - random number populates, set all other values to = 0
-	function startGame() {
-		$("#randomNumber").text("Goal: " + randomNumber);
-		$("#wins").text("Wins: " + wins);
-		$("#losses").text("Losses: " + losses);
-		$("#totalScore").text("Total score: " + totalScore);
-
-	}
-
-startGame ();
-
 //Assign random value for each crystal when button is clicked
-	//function crystalRandomNumber() {
-		//for (var i=0; i<=12; i++) {
-
-		//}
-
-//}
-
-
-//function crystalRandomNumber() {
+function givecrystalRandomNumber () {
 	crystal1 = Math.floor(Math.random() * (crystalMaxNumber - crystalMinNumber + 1)) + crystalMinNumber;
 	console.log(crystal1);
 	crystal2 = Math.floor(Math.random() * (crystalMaxNumber - crystalMinNumber + 1)) + crystalMinNumber;
@@ -67,40 +47,59 @@ startGame ();
 	console.log(crystal3);
 	crystal4 = Math.floor(Math.random() * (crystalMaxNumber - crystalMinNumber + 1)) + crystalMinNumber;
 	console.log(crystal4);
-})
-//$(button).on("click", function(event) {
-	//$(total score).html(userScore)
-	//when total score = goal then run  through if statements
-//})
+}
 
-//EVENT CLICK FOR BUTTON AND ADD SCORE TO TOTAL SCORES
-//crystalRandomNumber();
+//Start game - random number populates, set all other values to = 0
+	function startGame() {
+		$("#randomNumber").text("Goal: " + randomNumber);
+		$("#wins").text("Wins: " + wins);
+		$("#losses").text("Losses: " + losses);
+		$("#totalScore").text("Total score: " + totalScore);
+		givecrystalRandomNumber();
+	}
 
-//Add value to total score on click or event key up
+startGame ();
+
+//Define totalScore - empty array for button values to go into
+	var totalScoreArray = [];
+
+//create event so that on click the crystal value adds to  total score
+	$(".button").on("click", function(event) {	
+		totalScoreArray = totalScore + crystalRandomNumber;
+		$(totalScore).html(totalScoreArray);
+	//$(".button").on("click", function() {
+
+// update HTML with total score with each button click
+
+
 
 //If else statements - wins when total score = randomNumber then wins++ & alert
 //if score > randomNumber then losses++ & resetGame
-	if (totalScore === randomNumber) {
-		wins++;
-		$("#wins").text("Wins: " + wins);
-		alert("Congrats, you win!");
-	}
-	else if (totalScore > randomNumber) {
-		losses++;
-		$("#losses").text("Losses: " + losses);
-		alert("You lose!");
-		resetGame();
+	function scoreChecker () {
+		if (totalScore === randomNumber) {
+			wins++;
+			$("#wins").text("Wins: " + wins);
+			alert("Congrats, you win!");
+		}
+		else if (totalScore > randomNumber) {
+			losses++;
+			$("#losses").text("Losses: " + losses);
+			alert("You lose!");
+			resetGame();
+		}
 	}
 //reset game function: losses & total Score back to 0, new random values for goal & buttons
 	function resetGame() {
-		var totalScore = 0;
+		totalScore = 0;
 		$("#totalScore").text("Total score: " + totalScore);
 		// New Random number generated for Goal & crystal values
-		crystalRandomNumber();
+		randomNumberFromRange ();
+		givecrystalRandomNumber();
 		console.log("reset game is running");
 	};
 
- 	
 
+	});	
 
+})
 //BONUS: start button & full reset button	
