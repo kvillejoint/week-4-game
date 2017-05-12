@@ -61,9 +61,10 @@ $(document).ready(function() {
 
         //create event so that on click the crystal value adds to  total score
         $(".button").on("click", function(event) {
-        	console.log(this);
+        	console.log(this);	
         	console.log(this.value);
-            totalScore = totalScore + this.value;
+            totalScore = number(totalScore + number(this.value));
+            console.log(totalScore);
   //NEEDS FIXING: THIS IS ADDING BUTTON VALUES NEXT TO EACH OTHER NOT ADDING THEM!!
             $("#totalScore").html("Total score: " + totalScore);
             scoreChecker();
