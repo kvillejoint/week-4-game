@@ -18,12 +18,12 @@ $(document).ready(function() {
         console.log(randomNumber);
 
         // variable for crystal array
-        var crystal = [];
+        var crystal = 0;
         // boolean variable for initial crystal value of null
         var crystal1 = 0;
-        var crystal2 = [];
-        var crystal3 = [];
-        var crystal4 = [];
+        var crystal2 = 0;
+        var crystal3 = 0;
+        var crystal4 = 0;
 
         //Variables and function for generating values for gem buttonsActions for buttons - random value between 1-12 for each button
         var crystalMinNumber = 1;
@@ -40,21 +40,17 @@ $(document).ready(function() {
         //Assign random value for each crystal when button is clicked
         function giveCrystalRandomNumber() {
             $("#crystal1")[0].value = Math.floor(Math.random() * (crystalMaxNumber - crystalMinNumber + 1)) + crystalMinNumber;
-                        //console.log(crystal1);
-            crystal2 = Math.floor(Math.random() * (crystalMaxNumber - crystalMinNumber + 1)) + crystalMinNumber;
-            console.log(crystal2);
-            crystal3 = Math.floor(Math.random() * (crystalMaxNumber - crystalMinNumber + 1)) + crystalMinNumber;
-            console.log(crystal3);
-            crystal4 = Math.floor(Math.random() * (crystalMaxNumber - crystalMinNumber + 1)) + crystalMinNumber;
-            console.log(crystal4);
+            $("#crystal2")[0].value = Math.floor(Math.random() * (crystalMaxNumber - crystalMinNumber + 1)) + crystalMinNumber;
+            $("#crystal3")[0].value = Math.floor(Math.random() * (crystalMaxNumber - crystalMinNumber + 1)) + crystalMinNumber;
+            $("#crystal4")[0].value = Math.floor(Math.random() * (crystalMaxNumber - crystalMinNumber + 1)) + crystalMinNumber;
         }
 
         //Start game - random number populates, set all other values to = 0
         function startGame() {
-            $("#randomNumber").text("Goal: " + randomNumber);
-            $("#wins").text("Wins: " + wins);
-            $("#losses").text("Losses: " + losses);
-            $("#totalScore").text("Total score: " + totalScore);
+            $("#randomNumber").html("Goal: " + randomNumber);
+            $("#wins").html("Wins: " + wins);
+            $("#losses").html("Losses: " + losses);
+            $("#totalScore").html("Total score: " + totalScore);
             giveCrystalRandomNumber();
         }
 
@@ -68,25 +64,23 @@ $(document).ready(function() {
         	console.log(this);
         	console.log(this.value);
             totalScore = totalScore + this.value;
-            $("#totalScore").html(totalScore);
+  //NEEDS FIXING: THIS IS ADDING BUTTON VALUES NEXT TO EACH OTHER NOT ADDING THEM!!
+            $("#totalScore").html("Total score: " + totalScore);
             scoreChecker();
         });
-        //$(".button").on("click", function() {
-
+        
         // update HTML with total score with each button click
 
-
-
         //If else statements - wins when total score = randomNumber then wins++ & alert
-        //if score > randomNumber then losses++ & resetGame
+        //If score > randomNumber then losses++ & resetGame
         function scoreChecker() {
             if (totalScore === randomNumber) {
                 wins++;
-                $("#wins").text("Wins: " + wins);
+                $("#wins").html("Wins: " + wins);
                 alert("Congrats, you win!");
             } else if (totalScore > randomNumber) {
                 losses++;
-                $("#losses").text("Losses: " + losses);
+                $("#losses").html("Losses: " + losses);
                 alert("You lose!");
                 resetGame();
             }
@@ -94,7 +88,10 @@ $(document).ready(function() {
         //reset game function: losses & total Score back to 0, new random values for goal & buttons
         function resetGame() {
             totalScore = 0;
-            $("#totalScore").text("Total score: " + totalScore);
+            $("#randomNumber").html("Goal: " + randomNumber);
+            $("#wins").html("Wins: " + wins);
+            $("#losses").html("Losses: " + losses);
+            $("#totalScore").html("Total score: " + totalScore);
             // New Random number generated for Goal & crystal values
             randomNumberFromRange();
             givecrystalRandomNumber();
